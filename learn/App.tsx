@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
+import MainStyle from './constants/MainStyle';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -19,7 +20,7 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={styles.container}>
+      <View style={MainStyle.STYLES.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <AppNavigator />
       </View>
@@ -52,12 +53,3 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
